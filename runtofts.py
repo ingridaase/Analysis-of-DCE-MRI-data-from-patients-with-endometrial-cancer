@@ -7,7 +7,7 @@ from imagedata import Series
 from tofts_method import *
 from alignSeries_mod import *
 from readdata import *
-#from AIF_deterministic import *
+from AIF_deterministic import *
 
 def runtofts_manualAIF(dce, mask, AIF, read_option = 'mask2dce', model_option = 'average'): 
     '''
