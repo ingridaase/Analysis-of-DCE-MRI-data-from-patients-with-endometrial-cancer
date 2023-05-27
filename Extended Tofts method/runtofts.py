@@ -2,6 +2,7 @@ import numpy as np
 import os
 import matplotlib.pyplot as plt
 from imagedata import Series
+from skimage.morphology import erosion, dilation
 
 #Functions 
 from tofts_method import *
@@ -158,6 +159,13 @@ def runtofts_popAIF(dce_path, mask_path, aif, read_option = 'mask2dce', model_op
     '''
     Run ETM using a population-based AIF.
     '''
+    '''
+    #Eoded or dilation tumor masks. 
+    mask = Series(mask_path)
+    eroded_mask = erosion(mask) 
+    dilated_mask = dilation(mask)
+    '''
+    
     #Read data 
     MASK, DCE, timeline = readdata(mask_path, dce_path, read_option)
     
@@ -180,7 +188,6 @@ def runtofts_popAIF(dce_path, mask_path, aif, read_option = 'mask2dce', model_op
     dynim = DCE.copy()
     for k in range(len(timeline)):
         dynim[k,:,:,:] = DCE[k,:,:,:] - S0
-
 
     if model_option == 'average': 
         #Finding mean concentration inside mask 
