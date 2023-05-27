@@ -1,5 +1,5 @@
 # Analysis of DCE-MRI data from patients with endometrial cancer
-
+This repository includes the code for the master thesis "Analysis of DCE-MRI data from patients with endometrial cancer".
 # Stub of a workflow triggered by arriving data
 
 In a research environment we want to be notified if new data arrives so we can process on demand. Output data needs to be stored as JSON - to be added to REDCap; new image data should be uploaded as DICOM to document processing results.
