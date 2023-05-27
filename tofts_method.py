@@ -5,7 +5,7 @@ from scipy.optimize import curve_fit
 
 def tofts_model(timeline, Kt, ve, vp, cp): 
     '''
-    This function represents Tofts model for analysis of DCE MRI data.
+    This function represents Extended Tofts method for analysis of DCE MRI data.
     '''
     nt = len(timeline)
     Ct = np.zeros(nt, dtype='float')
@@ -20,14 +20,21 @@ def tofts_model(timeline, Kt, ve, vp, cp):
     return Ct
 
 def run_tofts(timeline, C, cp): 
+    '''
+    This function runs ETM for endometrial cancer, given the concentration of CA in the tissue
+    and the timeline and the plasma CA concentration. 
+    '''
 
+    #Initial values
     Kt = 0.001
     ve = 0.1 
     vp = 0.1
 
+    #curve optimization
     fit_func = lambda timeline, Kt, ve, vp: tofts_model(timeline, Kt, ve,vp, cp)
     popt,pcov,infodict,mes,ier = curve_fit(fit_func, timeline, C, bounds=([-10,0,0], [10,1,1]), full_output=True, maxfev=5000) 
 
+    #Store parameters as dictionary 
     Kt_opt = popt[0]
     ve_opt = popt[1]
     vp_opt = popt[2]

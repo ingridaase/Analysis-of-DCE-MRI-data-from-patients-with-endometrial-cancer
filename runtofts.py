@@ -10,13 +10,12 @@ from readdata import *
 #from AIF_deterministic import *
 
 def runtofts_manualAIF(dce, mask, AIF, read_option = 'mask2dce', model_option = 'average'): 
-    #Function used to run tofts model
+    '''
+    Run ETM using a manually annotated AIF. 
+    '''
    
-
     #Read data 
     MASK, DCE, timeline = readdata(mask, dce, read_option)
-
-
 
     #Find voxel size
     spacing = DCE.spacing
@@ -88,11 +87,9 @@ def runtofts_manualAIF(dce, mask, AIF, read_option = 'mask2dce', model_option = 
 
 
 def runtofts_autoAIF(dce_path, mask_path, read_option = 'mask2dce', model_option = 'average'): 
-   
-    #Motion correction of dce image using MCFLIRT 
-    #dce2 = mcflirt(dce, 80)
-    #dce2.write(dce_mc_path = os.path.join(newdata_path, 'dce_mcflirt'), formats=['dicom'])
-
+    '''
+    Run ETM using a automatic AIF. 
+    '''
     #Read data 
     MASK, DCE, timeline = readdata(mask_path, dce_path, read_option)
     
@@ -158,11 +155,9 @@ def runtofts_autoAIF(dce_path, mask_path, read_option = 'mask2dce', model_option
 
  
 def runtofts_popAIF(dce_path, mask_path, aif, read_option = 'mask2dce', model_option = 'average'): 
-   
-    #Motion correction of dce image using MCFLIRT 
-    #dce2 = mcflirt(dce, 80)
-    #dce2.write(dce_mc_path = os.path.join(newdata_path, 'dce_mcflirt'), formats=['dicom'])
-
+    '''
+    Run ETM using a population-based AIF.
+    '''
     #Read data 
     MASK, DCE, timeline = readdata(mask_path, dce_path, read_option)
     
