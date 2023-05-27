@@ -25,17 +25,7 @@ if not(os.path.exists(output)):
 
 patientID = description['PatientID']
     
-aif = loadtxt('aif.csv', delimiter=',')
-
-'''
-files = []
-print('glob: {}/input'.format(sys.argv[1]))
-for fname in glob.glob(datafolder+'/input/*', recursive=False):
-    if os.path.isfile(fname):
-        files.append(fname)
-
-print("file count: {}".format(len(files)))
-'''
+aif = loadtxt('aif.csv', delimiter=',') #Population-based AIF
 
 study = Study(datafolder+'/input', opts={'strict_values': False})
 for uid in study: 
@@ -59,7 +49,7 @@ model_option = 'average'
 redcap_result = []
 
 try: 
-    opt_params = runtofts_popAIF(dce, mask_jad, aif, read_option, model_option)
+    opt_params = runtofts_popAIF(dce, mask_jad, aif, read_option, model_option) #run ETM 
     redcap_result.append({
             'field_name': 'MASK', 
             'record_id':description['PatientID'], 
@@ -77,7 +67,7 @@ except NameError:
     print('JAD mask does not exist')
 
 try: 
-    opt_params = runtofts_popAIF(dce, mask_kwl, aif, read_option, model_option)
+    opt_params = runtofts_popAIF(dce, mask_kwl, aif, read_option, model_option) #run ETM
     redcap_result.append({
             'field_name': 'MASK', 
             'record_id':description['PatientID'], 
@@ -97,7 +87,7 @@ except NameError:
 model_option = 'voxel'
 
 try: 
-    opt_params = runtofts_popAIF(dce, mask_jad, aif, read_option, model_option)
+    opt_params = runtofts_popAIF(dce, mask_jad, aif, read_option, model_option) #run ETM
     for k in opt_params: 
         redcap_result.append({
             'field_name': model_option+'_'+k, 
@@ -109,7 +99,7 @@ except NameError:
     print()
 
 try: 
-    opt_params = runtofts_popAIF(dce, mask_kwl, aif, read_option, model_option)
+    opt_params = runtofts_popAIF(dce, mask_kwl, aif, read_option, model_option) #run ETM
     for k in opt_params: 
         redcap_result.append({
             'field_name': model_option+'_'+k, 
@@ -120,7 +110,7 @@ try:
 except NameError: 
     print()
 
-
+#save as json
 with open(output+"/output.json", 'w') as outfile:
     outfile.write(json.dumps(redcap_result, indent=4)) 
 
