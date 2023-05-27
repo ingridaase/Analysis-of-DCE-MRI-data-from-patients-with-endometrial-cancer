@@ -4,9 +4,9 @@ import os
 from imagedata.series import Series
 import matplotlib.pyplot as plt 
 
-data_path = 'H:/data/master endometrial data/'
-#patient_list = ['118', '122', '042', '136', '170', '255', '265', '198', '229', '135', '246']
-patient_list = ['011', '036', '042', '086', '097', '118', '122', '135', '136', '150', '170', '191', '198','199', '203', '229', '246', '251', '255', '265']
+data_path = '' #Path to AIF data
+
+patient_list = [] #List of patients to retrieve AIF data from 
 n_patients = len(patient_list)
 n_AIF = np.zeros((n_patients, 160))
 
@@ -37,13 +37,13 @@ for index,item in enumerate(patient_list):
     AIF_vals = np.asarray(np.mean(AIF_vals, axis=1), dtype='float')
     n_AIF[index,:] = AIF_vals
     
-#Mean of 11 AIF
+#Mean of 20 AIF
 mean_AIF = n_AIF.mean(axis=0)
 print(mean_AIF)
-savetxt('H:/data/master endometrial data/Pop_AIF/aif_data3.csv', mean_AIF, delimiter=',')
+savetxt('', mean_AIF, delimiter=',') #Choose path where AIF should be saved
 
 plt.plot(mean_AIF)
 plt.title('Arterial Input Function (AIF)')
 plt.xlabel('time [s]')
 plt.ylabel('Signal intensity [a.u]')
-plt.savefig('H:/data/master endometrial data/Pop_AIF/pop_aif_all.jpg')
+plt.savefig('') #Choose path where figure should be saved
