@@ -1,4 +1,4 @@
-# Analysis of DCE-MRI data from 
+# Analysis of DCE-MRI data from patients with endometrial cancer
 
 # Stub of a workflow triggered by arriving data
 
