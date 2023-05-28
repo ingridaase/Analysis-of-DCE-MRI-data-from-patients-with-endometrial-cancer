@@ -10,7 +10,7 @@ This repository is organized in three folders:
 
 **Extended Tofts method:** This folder contains algorithms for running ETM. An arterial input function is required for ETM. This folder contains scripts for running ETM inside the research information system, in addition to scripts for running ETM on a local machine.
 
-**Visualization and statistics:** This folder contains examples of how the resulting model parameters were analysed and visualized. Additionally clinical parameters where analysed for correlations with the resulting parameterd from the research environment. 
+**Visualization and statistics:** This folder contains examples of how the resulting model parameters were analysed and visualized. Additionally, clinical parameters were imported and included in the analysis. 
 
 ## Requirements 
 The requirements for the algorithms in this project are included in the "environment.yml" file. 
