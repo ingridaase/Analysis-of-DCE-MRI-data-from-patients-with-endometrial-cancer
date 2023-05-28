@@ -1,28 +1,13 @@
-## Analysis of DCE-MRI data from patients with endometrial cancer
-This repository includes the code for the master thesis "Analysis of DCE-MRI data from patients with endometrial cancer".
+# Master's thesis repository
+This repository includes the code for the master's thesis "Analysis of DCE-MRI data from patients with endometrial cancer". In this project the pharmacokinetic model extended Tofts' method (ETM) was used to analyse DCE-MRI data from patients with endometrial cancer for quantitative perfusion parameters. 
 
-# Stub of a workflow triggered by arriving data
+Most of the algorithms used for running ETM on DCE-MRI data are included in this repository. Two images are required for running ETM, including whole-volume tumor masks and the DCE-MRI images. In addition, an arterial input function is required. Examples of how the resulting parameters were analysed and visualized are also included in this repository. 
 
-In a research environment we want to be notified if new data arrives so we can process on demand. Output data needs to be stored as JSON - to be added to REDCap; new image data should be uploaded as DICOM to document processing results.
+## Contents of the repository 
+This repository is organized in three folders: 
 
-The stub provides a first setup for you. First step is to get triggered by a directory containing DICOM and structured data (descr.json), select an image series and load the individual slices. Those could be 2D or 3D loaded in memory, or as an intermediate directory for command line driven analysis pipelines.
+**The arterial input function:** This folder contains three different methods for estimating an arterial input function. An AIF ROI can be annotated from a DCE-MRI image, using the "annotate_AIF.py" file. A population-based AIF can be calculated based on manually annotated AIFs using the "population_AIF.py". An automatic AIF can be estimated from a DCE-MRI image using the "AIF_deterministic.py". An additional jupyter notebook is added to the folder to show the different steps of the automatic AIF algorithm. 
 
-In order to use the python script you need to install pydicom, numpy and matplotlib using pip or conda. Consider using conda as an environment for python. This will help you transfer your development pipeline into the research PACS later.
+**Extended Tofts method:** This folder contains algorithms for running ETM. An arterial input function is required for ETM. This folder contains code for running ETM inside the research information system, where the main file for running ETM is "stub.py". This folder also contains code for running ETM on a local machine, where "runtofts_script.py" is the main file for running ETM. In this file comments are included to illustrate which changes are required when different AIF methods are used.
 
-Test your workflow with 'ror trigger --keep'. Start building the environment with:
-
-```bash
-ror build
-```
-
-This will ask you to update a Dockerfile and successfully test it using:
-
-```bash
-ror trigger --keep --cont workflow_<project name>
-```
-
-In order to upload your workflow to the research PACS you need a submission token for your research project. Such a token can be obtained from the research PACS interface on:
-
-```bash
-open https://fiona.ihelse.net/applications/User/index.php
-```
+**Visualization and statistics:** This folder contains examples of how the resulting model parameters were analysed and visualized. Examples of how the model parameters obatined from local modeling were analysed are included in the "local_modeling_results.ipynb" notebook. Examples of how the model paramters from the research environment were analysed and how clinical parameters were included in the analysis are shown in the "research_environment_results.ipynb" notebook. Additional, the notebook "parameter_maps.ipynb" shows how the parameters maps were created from the voxelwise obtained model parameters.
