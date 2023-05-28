@@ -6,11 +6,11 @@ Most of the algorithms used for running ETM on DCE-MRI data are included in this
 ## Contents of the repository 
 This repository is organized in three folders: 
 
-**The arterial input function:** This folder contains three different methods for estimating an arterial input function. An AIF ROI can be annotated from a DCE-MRI image, using the "annotate_AIF.py" file. A population-based AIF can be calculated based on manually annotated AIFs using the "population_AIF.py". An automatic AIF can be estimated from a DCE-MRI image using the "AIF_deterministic.py". An additional jupyter notebook is added to the folder to show the different steps of the automatic AIF algorithm. 
+**The arterial input function:** This folder contains three different methods for estimating an arterial input function, including manual annotation of the AIF, an atuomatic algorithm for estimating the AIF and a population-based AIF. The population-based AIF is based on manually annotated AIFs, whereas the two other methodologies requires an input DCE-MRI image in DICOM format. 
 
-**Extended Tofts method:** This folder contains algorithms for running ETM. An arterial input function is required for ETM. This folder contains code for running ETM inside the research information system, where the main file for running ETM is "stub.py". This folder also contains code for running ETM on a local machine, where "runtofts_script.py" is the main file for running ETM. In this file comments are included to illustrate which changes are required when different AIF methods are used.
+**Extended Tofts method:** This folder contains algorithms for running ETM. An arterial input function is required for ETM. This folder contains scripts for running ETM inside the research information system, in addition to scripts for running ETM on a local machine.
 
-**Visualization and statistics:** This folder contains examples of how the resulting model parameters were analysed and visualized. Examples of how the model parameters obatined from local modeling were analysed are included in the "local_modeling_results.ipynb" notebook. Examples of how the model paramters from the research environment were analysed and how clinical parameters were included in the analysis are shown in the "research_environment_results.ipynb" notebook. Additional, the notebook "parameter_maps.ipynb" shows how the parameters maps were created from the voxelwise obtained model parameters.
+**Visualization and statistics:** This folder contains examples of how the resulting model parameters were analysed and visualized. Additionally clinical parameters where analysed for correlations with the resulting parameterd from the research environment. 
 
 ## Requirements 
 The requirements for the algorithms in this project are included in the "environment.yml" file. 
