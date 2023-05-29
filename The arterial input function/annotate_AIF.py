@@ -4,9 +4,11 @@ from imagedata.series import Series
 import matplotlib.pyplot as plt
 from datetime import date
 
-#Annotate a AIF ROI from the dynamic image 
+'''
+This script is used for annotating an AIF using the imagedata Python library. 
+'''
 
-patient_path = '' 
+patient_path = '' #path to patientdata
 dce_path = '' #path to DCE-MRI data
 aif_path = '' #output path 
 
