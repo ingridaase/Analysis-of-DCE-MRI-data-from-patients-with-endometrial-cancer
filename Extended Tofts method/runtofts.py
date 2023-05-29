@@ -10,11 +10,13 @@ from alignSeries_mod import *
 from readdata import *
 from AIF_deterministic import *
 
+'''
+This script contains three functions for running ETM using three different methods for estimating the arterial input function. 
+'''
+
+#Run ETM using a manually annotated AIF.
 def runtofts_manualAIF(dce, mask, AIF, read_option = 'mask2dce', model_option = 'average'): 
-    '''
-    Run ETM using a manually annotated AIF. 
-    '''
-   
+
     #Read data 
     MASK, DCE, timeline = readdata(mask, dce, read_option)
 
@@ -41,9 +43,8 @@ def runtofts_manualAIF(dce, mask, AIF, read_option = 'mask2dce', model_option = 
     AIF_vals = dynim[:, non_zero_in_AIF[1], non_zero_in_AIF[2], non_zero_in_AIF[3]]
     AIF_vals = np.asarray(np.mean(AIF_vals, axis=1), dtype='float')
 
-    #Calculate plasma concentration from the value of red blood cells 
-    cp = AIF_vals/(1-0.42) #42 percent hematocrit (red blood cells)
-
+    #Calculate plasma concentration from the value of hematocrit 
+    cp = AIF_vals/(1-0.42) #42 percent hematocrit 
 
     if model_option == 'average': 
         #Finding mean concentration inside mask 
@@ -86,11 +87,9 @@ def runtofts_manualAIF(dce, mask, AIF, read_option = 'mask2dce', model_option = 
 
     return opt_params
 
-
+#Run ETM using a automatic AIF.
 def runtofts_autoAIF(dce_path, mask_path, read_option = 'mask2dce', model_option = 'average'): 
-    '''
-    Run ETM using a automatic AIF. 
-    '''
+    
     #Read data 
     MASK, DCE, timeline = readdata(mask_path, dce_path, read_option)
     
@@ -154,11 +153,9 @@ def runtofts_autoAIF(dce_path, mask_path, read_option = 'mask2dce', model_option
         opt_params['tumor_volume'] = tumor_vol
     return opt_params
 
- 
+#Run ETM using a population-based AIF.
 def runtofts_popAIF(dce_path, mask_path, aif, read_option = 'mask2dce', model_option = 'average'): 
-    '''
-    Run ETM using a population-based AIF.
-    '''
+
     '''
     #Eoded or dilation tumor masks. 
     mask = Series(mask_path)
