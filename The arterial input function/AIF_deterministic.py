@@ -9,6 +9,11 @@ import matplotlib.pyplot as plt
 from imagedata.series import Series
 import os 
 
+'''
+Original implementation of this script is by Erling Andersen. 
+This scripts estimates the AIF by using the steps presented by Tönnes et al. (Christian Tönnes et al. “Deterministic Arterial Input Function selection in DCE-MRI
+for automation of quantitative perfusion calculation of colorectal cancer”. In: Magnetic Resonance Imaging 75 (Jan. 2021), pp. 116–123. ISSN: 18735894. DOI: 10.1016/j.mri.2020.09.009.)
+'''
 
 def relative_concentration_map(im, baseline, k, option):
 
