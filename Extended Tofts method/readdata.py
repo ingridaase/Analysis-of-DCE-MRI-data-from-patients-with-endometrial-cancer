@@ -1,7 +1,9 @@
-from alignSeries_mod import *
-from imagedata.series import Series
+from alignSeries_mod import * #The alignSeries function is now added to the imagedata library, see imagedata documentation https://imagedata.readthedocs.io/en/latest/UserGuide.html
+from imagedata import Series
+'''
+This function reads the DICOM image and co-registrates to images with different grids.
+'''
 
-#Fjernet mulitheten for å registrere fra dce til vibe, usikker på om jeg trenger denne da det tar lenger tid 
 def readdata(mask_path, dce_path, option): 
     if option == 'mask2dce': 
         imref_dce, imreg_mask, dim_dce, dim_mask, timeline = alignSeries_mod(dce_path, 'time', mask_path, '', 'mask')
