@@ -4,6 +4,10 @@ import os
 from imagedata.series import Series
 import matplotlib.pyplot as plt 
 
+'''
+This script is used for calculating a population-based AIF based on annotated AIFs.
+'''
+
 data_path = '' #Path to AIF data
 
 patient_list = [] #List of patients to retrieve AIF data from 
