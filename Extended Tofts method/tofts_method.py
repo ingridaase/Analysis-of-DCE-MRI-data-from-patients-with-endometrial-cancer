@@ -1,12 +1,13 @@
 #Packages 
 import numpy as np
 from scipy.optimize import curve_fit
+'''
+This script contains two functions, which are need for running ETM.
+'''
 
-
+#Extended Tofts method for analysis of DCE MRI data
 def tofts_model(timeline, Kt, ve, vp, cp): 
-    '''
-    This function represents Extended Tofts method for analysis of DCE MRI data.
-    '''
+
     nt = len(timeline)
     Ct = np.zeros(nt, dtype='float')
     deltat = timeline[1:]-timeline[0:-1]
@@ -19,12 +20,9 @@ def tofts_model(timeline, Kt, ve, vp, cp):
         Ct[k] = vp*cp[k] + w[-1]
     return Ct
 
+#Run ETM given the concentration of CA in tissue of interest, the timeline and the plasma CA concentration
 def run_tofts(timeline, C, cp): 
-    '''
-    This function runs ETM for endometrial cancer, given the concentration of CA in the tissue
-    and the timeline and the plasma CA concentration. 
-    '''
-
+    
     #Initial values
     Kt = 0.001
     ve = 0.1 
