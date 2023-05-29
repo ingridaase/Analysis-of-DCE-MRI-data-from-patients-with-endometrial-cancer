@@ -6,6 +6,9 @@ import json
 from numpy import loadtxt
 from imagedata import Study
 
+'''
+This script is used for running ETM in the research environment. Two test this, the ror tool is required, see the README.md file in this folder.
+'''
 
 #Import functions 
 from runtofts import *
