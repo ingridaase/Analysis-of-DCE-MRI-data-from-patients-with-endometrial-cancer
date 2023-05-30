@@ -6,7 +6,6 @@ from skimage.morphology import erosion, dilation
 
 #Functions 
 from tofts_method import *
-from alignSeries_mod import *
 from readdata import *
 from AIF_deterministic import *
 
